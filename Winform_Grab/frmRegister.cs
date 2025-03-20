@@ -17,7 +17,7 @@ namespace Winform_Grab
 
         private void frmRegister_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void label3_Click(object sender, EventArgs e)

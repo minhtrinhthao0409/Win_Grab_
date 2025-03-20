@@ -201,7 +201,7 @@
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(216, 28);
-            this.txtName.TabIndex = 12;
+            this.txtName.TabIndex = 0;
             // 
             // frmRegister
             // 
