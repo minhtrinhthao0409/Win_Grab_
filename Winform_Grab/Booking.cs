@@ -90,6 +90,7 @@ namespace Winform_Grab
             // 
             this.gmapControl.Bearing = 0F;
             this.gmapControl.CanDragMap = true;
+            this.gmapControl.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.gmapControl.EmptyTileColor = System.Drawing.Color.Navy;
             this.gmapControl.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gmapControl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
@@ -141,6 +142,8 @@ namespace Winform_Grab
             // cbTravelMode
             // 
             this.cbTravelMode.FormattingEnabled = true;
+            this.cbTravelMode.Items.AddRange(new object[] {
+            ""});
             this.cbTravelMode.Location = new System.Drawing.Point(12, 431);
             this.cbTravelMode.Name = "cbTravelMode";
             this.cbTravelMode.Size = new System.Drawing.Size(120, 21);
@@ -225,6 +228,7 @@ namespace Winform_Grab
 
         private async void cbTravelMode_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             string origin = txtOrigin.Text.Trim();
             string destination = txtDestination.Text.Trim();
             string travelMode = cbTravelMode.SelectedItem.ToString();
