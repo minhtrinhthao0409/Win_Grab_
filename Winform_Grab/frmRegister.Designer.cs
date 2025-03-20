@@ -104,6 +104,7 @@
             this.txtComPassword.Name = "txtComPassword";
             this.txtComPassword.Size = new System.Drawing.Size(216, 28);
             this.txtComPassword.TabIndex = 16;
+            this.txtComPassword.UseSystemPasswordChar = true;
             this.txtComPassword.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label4

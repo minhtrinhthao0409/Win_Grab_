@@ -68,16 +68,16 @@ namespace Winform_Grab
 
         private void checkboxShowPas_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkboxShowPas.Checked)
+            if (!checkboxShowPas.Checked)
             {
-                txtPassword.UseSystemPasswordChar = false;
-                txtComPassword.UseSystemPasswordChar = false;
+                txtPassword.UseSystemPasswordChar = true;
+                txtComPassword.UseSystemPasswordChar = true;
 
             }
             else 
             { 
-                txtPassword.UseSystemPasswordChar = true;
-                txtComPassword.UseSystemPasswordChar = true;
+                txtPassword.UseSystemPasswordChar = false;
+                txtComPassword.UseSystemPasswordChar = false;
             }
         }
 
