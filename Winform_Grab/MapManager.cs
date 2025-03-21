@@ -55,8 +55,8 @@ namespace Winform_Grab
 
             // Đánh dấu điểm
             var markers = new GMapOverlay("Markers");
-            markers.Markers.Add(new GMarkerGoogle(start, GMarkerGoogleType.green));
-            markers.Markers.Add(new GMarkerGoogle(end, GMarkerGoogleType.red));
+            markers.Markers.Add(new GMarkerGoogle(start, GMarkerGoogleType.pink_pushpin));
+            markers.Markers.Add(new GMarkerGoogle(end, GMarkerGoogleType.purple_dot));
 
             // Cập nhật bản đồ
             _mapControl.Overlays.Clear();

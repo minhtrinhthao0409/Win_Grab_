@@ -36,6 +36,8 @@
             this.txtfullName = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.Label();
             this.txtPhoneNum = new System.Windows.Forms.Label();
+            this.btnEditInfo = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -124,12 +126,43 @@
             this.txtPhoneNum.TabIndex = 10;
             this.txtPhoneNum.Text = "pn";
             // 
+            // btnEditInfo
+            // 
+            this.btnEditInfo.BackColor = System.Drawing.Color.White;
+            this.btnEditInfo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditInfo.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
+            this.btnEditInfo.Location = new System.Drawing.Point(25, 353);
+            this.btnEditInfo.Name = "btnEditInfo";
+            this.btnEditInfo.Size = new System.Drawing.Size(216, 35);
+            this.btnEditInfo.TabIndex = 11;
+            this.btnEditInfo.Text = "EDIT INFORMATION";
+            this.btnEditInfo.UseVisualStyleBackColor = false;
+            this.btnEditInfo.Click += new System.EventHandler(this.btnEditInfo_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Gray;
+            this.button1.Location = new System.Drawing.Point(25, 418);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(216, 35);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "CHANGE PASSWORD";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // ShowInfor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(285, 544);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnEditInfo);
             this.Controls.Add(this.txtPhoneNum);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.txtfullName);
@@ -158,5 +191,7 @@
         private System.Windows.Forms.Label txtfullName;
         private System.Windows.Forms.Label txtID;
         private System.Windows.Forms.Label txtPhoneNum;
+        private System.Windows.Forms.Button btnEditInfo;
+        private System.Windows.Forms.Button button1;
     }
 }
