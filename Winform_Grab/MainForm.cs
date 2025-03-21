@@ -17,7 +17,7 @@ namespace Winform_Grab
         {
             InitializeComponent();
             currentCustomer = customer;
-            txtHello.Text = "Hello, " + currentCustomer.Name + " Lên xe em đèo iu iu.";
+            txtHello.Text = "Hello, " + currentCustomer.Name + ".\n" +"Không chê em nghèo, lên xe em đèo.";
         }
 
         private void toolStripTextBox1_Click(object sender, EventArgs e)

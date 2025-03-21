@@ -93,6 +93,12 @@ namespace Winform_Grab
                 MessageBox.Show("Vui lòng nhập đầy đủ số điện thoại và mật khẩu!", "Thông báo", MessageBoxButtons.OK);
                 return;
             }
+            int numb;
+            if (!int.TryParse(phoneNumber, out numb))
+            {
+                MessageBox.Show("Vui lòng nhập số điện thoại hợp lệ!", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
             
             List<Customer> customers;
 
