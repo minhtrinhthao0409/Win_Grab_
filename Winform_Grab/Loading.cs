@@ -40,7 +40,6 @@ namespace Winform_Grab
         private void brnCancel_Click(object sender, EventArgs e)
         {
 
-            
             timer1.Stop();
             DialogResult result = MessageBox.Show("Bạn có chắc muốn hủy chuyến?", "", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
