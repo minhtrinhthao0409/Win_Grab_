@@ -41,6 +41,9 @@ namespace Winform_Grab
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
+            Loading loading = new Loading();
+            loading.Show();
+            //this.Hide();
             //string origin = txtOrigin.Text.Trim();
             //string destination = txtDestination.Text.Trim();
             //string travelMode = cbTravelMode.SelectedItem.ToString().ToLower();
