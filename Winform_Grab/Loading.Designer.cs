@@ -46,7 +46,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
             this.label1.Location = new System.Drawing.Point(152, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(262, 37);
+            this.label1.Size = new System.Drawing.Size(463, 65);
             this.label1.TabIndex = 0;
             this.label1.Text = "FINDING DRIVER ...";
             // 
@@ -54,16 +54,17 @@
             // 
             this.process.AutoSize = true;
             this.process.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.process.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
+            this.process.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
             this.process.Location = new System.Drawing.Point(360, 85);
             this.process.Name = "process";
-            this.process.Size = new System.Drawing.Size(54, 17);
+            this.process.Size = new System.Drawing.Size(94, 31);
             this.process.TabIndex = 1;
             this.process.Text = "process";
             // 
             // progressBar1
             // 
             this.progressBar1.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
             this.progressBar1.Location = new System.Drawing.Point(33, 114);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(381, 15);
@@ -101,7 +102,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(446, 186);
+            this.ClientSize = new System.Drawing.Size(522, 186);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.brnCancel);
             this.Controls.Add(this.progressBar1);

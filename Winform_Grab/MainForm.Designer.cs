@@ -89,7 +89,7 @@
             this.logOut.Font = new System.Drawing.Font("Nirmala UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logOut.Location = new System.Drawing.Point(185, 509);
             this.logOut.Name = "logOut";
-            this.logOut.Size = new System.Drawing.Size(65, 17);
+            this.logOut.Size = new System.Drawing.Size(111, 31);
             this.logOut.TabIndex = 3;
             this.logOut.Text = "LOG OUT";
             this.logOut.Click += new System.EventHandler(this.logOut_Click);
@@ -118,8 +118,7 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 30F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(285, 544);

@@ -21,8 +21,10 @@ namespace Winform_Grab
         private void Loading_Load(object sender, EventArgs e)
         {
             timer1.Start();
+            this.TopMost = true;
+
         }
-        //private void timer1_Tick(object sender, EventArgs e)
+        
         private void timer1_Tick_1(object sender, EventArgs e)
         {
             if (progressBar1.Value < 100)

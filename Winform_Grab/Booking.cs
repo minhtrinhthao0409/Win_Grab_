@@ -1,4 +1,5 @@
-﻿using GMap.NET;
+﻿using ExCSS;
+using GMap.NET;
 using GMap.NET.WindowsForms;
 using System;
 using System.Web;
@@ -41,6 +42,7 @@ namespace Winform_Grab
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
+            this.Opacity = 0.4;
             Loading loading = new Loading();
             loading.Show();
             //this.Hide();
