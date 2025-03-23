@@ -10,21 +10,34 @@ using System.Windows.Forms;
 
 namespace Winform_Grab
 {
-    public partial class Loading: Form
+    public partial class Loading : Form
     {
-        private MainForm parentForm;
-        public Loading()
+        private Customer currentCustomer;
+        private Location startLocation;
+        private Location endLocation;
+        private string travelMode;
+        private double distance;
+        private double duration;
+        private double fare;
+
+        public Loading(Customer customer, Location startLocation, Location endLocation, string travelMode, double distance, double duration, double fare)
         {
             InitializeComponent();
+            this.currentCustomer = customer;
+            this.startLocation = startLocation;
+            this.endLocation = endLocation;
+            this.travelMode = travelMode;
+            this.distance = distance;
+            this.duration = duration;
+            this.fare = fare;
         }
 
         private void Loading_Load(object sender, EventArgs e)
         {
             timer1.Start();
             this.TopMost = true;
-
         }
-        
+
         private void timer1_Tick_1(object sender, EventArgs e)
         {
             if (progressBar1.Value < 100)
@@ -35,21 +48,53 @@ namespace Winform_Grab
             else
             {
                 timer1.Stop();
-                MessageBox.Show("Đã tìm thấy tài xế!");
+
+                // Tìm tài xế
+                bool carType = travelMode.ToLower() == "car" ? false : true;
+                Driver driver = LookForDriver.FindDriver(startLocation, carType);
+                if (driver == null)
+                {
+                    MessageBox.Show("Không tìm thấy tài xế phù hợp. Vui lòng thử lại sau.");
+                    this.Close();
+                    return;
+                }
+
+                // Tạo chuyến đi
+                if (currentCustomer != null)
+                {
+                    Trip trip = TripHandler.CreateTrip(currentCustomer, startLocation, endLocation, driver, distance, fare);
+                    MessageBox.Show($"Đã tìm thấy tài xế {driver.Name}! Chuyến đi {trip.Id} đã được tạo thành công.");
+                }
+                else
+                {
+                    MessageBox.Show("Không thể tạo chuyến đi. Thông tin khách hàng không tồn tại.");
+                }
+
+                // Đóng form Loading
+                this.Close();
             }
         }
-        
+
         private void brnCancel_Click(object sender, EventArgs e)
         {
-
             timer1.Stop();
             DialogResult result = MessageBox.Show("Bạn có chắc muốn hủy chuyến?", "", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 this.Close();
-                new Booking(parentForm).Show();
+                if (currentCustomer != null)
+                {
+                    new Booking(currentCustomer).Show();
+                }
+                else
+                {
+                    MessageBox.Show("Không thể mở form Booking. Thông tin khách hàng không tồn tại.");
+                }
             }
-            else timer1.Start();
+            else
+            {
+                timer1.Start();
+            }
         }
     }
 }

@@ -11,17 +11,18 @@ namespace Winform_Grab
 {
     public partial class Booking : Form
     {
+        private Customer currentCustomer;
         private readonly MapManager _mapManager;
         private readonly string _apiKey = "FAKE_API_KEY_123456789"; // Thay bằng API Key thực tế
         private Label label1;
-        private MainForm parentForm;
-        public Booking(MainForm p)
+        //private MainForm parentForm;
+        public Booking(Customer customer)
         {
             InitializeComponent();
             _mapManager = new MapManager(gmapControl, _apiKey);
             InitializeControls();
             InitializeMap();
-            parentForm = p;
+            this.currentCustomer = customer;
         }
 
         private void InitializeControls()
@@ -40,44 +41,44 @@ namespace Winform_Grab
             gmapControl.Zoom = 5; // Reasonable initial zoom level
         }
 
-        private void btnCalculate_Click(object sender, EventArgs e)
+        private async void btnCalculate_Click(object sender, EventArgs e)
         {
-            this.Opacity = 0.4;
-            Loading loading = new Loading();
-            loading.Show();
-            //this.Hide();
-            //string origin = txtOrigin.Text.Trim();
-            //string destination = txtDestination.Text.Trim();
-            //string travelMode = cbTravelMode.SelectedItem.ToString().ToLower();
+            string origin = txtOrigin.Text.Trim();
+            string destination = txtDestination.Text.Trim();
+            string travelMode = cbTravelMode.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(origin) || string.IsNullOrEmpty(destination) || string.IsNullOrEmpty(travelMode))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
 
-            //if (string.IsNullOrEmpty(origin) || string.IsNullOrEmpty(destination))
-            //{
-            //    MessageBox.Show("Vui lòng nhập điểm xuất phát và điểm đến!");
-            //    return;
-            //}
+            try
+            {
+                // Tính toán khoảng cách, thời gian, giá tiền từ MapManager
+                double distance = 0;
+                double duration = 0;
+                double fare = 0;
+                (distance, duration, fare) = await _mapManager.ShowRouteAsync(origin, destination, travelMode.ToLower());
+                if (travelMode == "Car")
+                {
+                    duration = duration / 2; // Điều chỉnh thời gian cho Car
+                    fare = fare * 2; // Điều chỉnh giá cho Car
+                }
+                lblResult.Text = $"Distance: {distance:F2} km\nDuration: {duration:F2} giờ\nFare: {fare:N0} VNĐ";
 
-            //try
-            //{
-            //    //btnCalculate.Enabled = false;
-            //    if (travelMode == "Car")
-            //    {
-            //        (double distance, double duration, double fare) = await _mapManager.ShowRouteAsync(origin, destination, travelMode);
-            //        lblResult.Text = $"Distance: {distance:F2} km\nDuration: {duration/2:F2} giờ\nFare: {fare * 2:N0} VNĐ";
-            //    }
-            //    else if (travelMode == "Bike")
-            //    {
-            //        (double distance, double duration, double fare) = await _mapManager.ShowRouteAsync(origin, destination, travelMode);
-            //        lblResult.Text = $"Distance: {distance:F2} km\nDuration: {duration:F2} giờ\nFare: {fare:N0} VNĐ";
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"Lỗi: {ex.Message}");
-            //}
-            //finally
-            //{
-            //    //btnCalculate.Enabled = true;
-            //}
+                // Giả lập tọa độ (trong thực tế, bạn cần chuyển đổi địa chỉ thành tọa độ)
+                Location startLocation = new Location(21.0285, 105.8542); // Ví dụ: Hà Nội
+                Location endLocation = new Location(21.0385, 105.8642); // Ví dụ: Điểm đến gần Hà Nội
+
+                // Mở form Loading và truyền thông tin
+                this.Opacity = 1;
+                Loading loading = new Loading(currentCustomer, startLocation, endLocation, travelMode, distance, duration, fare);
+                loading.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi: {ex.Message}");
+            }
         }
 
         // Designer-generated code
@@ -259,8 +260,9 @@ namespace Winform_Grab
             {
                 click_pick = 0;
                 click_drop = 0;
-                parentForm.Show();
-                this.Close();
+                MainForm mainForm = new MainForm(currentCustomer);
+                mainForm.Show();
+                this.Hide();
             }
             else
             {

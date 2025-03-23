@@ -136,30 +136,28 @@ namespace Winform_Grab
         }
 
         // In thông tin lịch sử chuyến đi
-        public void PrintTripHistory()
+        public string PrintTripHistory()
         {
             if (trips.Count == 0)
             {
-                Console.WriteLine("Khách hàng " + customer.Name + " chưa có chuyến đi nào.");
-                return;
+                return $"Khách hàng {customer.Name} chưa có chuyến đi nào.";
             }
-
-            // In thông tin khách hàng một lần
-            Console.WriteLine("Lịch sử chuyến đi của khách hàng:");
-            Console.WriteLine($"ID: {customer.Id}, Tên: {customer.Name}, SĐT: {customer.PhoneNumber}");
-
-            // In danh sách chuyến đi
-            Console.WriteLine("Danh sách chuyến đi:");
-            for (int i = 0; i < trips.Count; i++)
+            else
             {
-                Trip trip = trips[i];
-                string paymentMethods = trip.PaymentMethod.Count > 0 ? string.Join(", ", trip.PaymentMethod) : "Chưa xác định";
-                Console.WriteLine($" - Chuyến {trip.Id}: Khoảng cách: {trip.Distance}km, Giá: {trip.Price}, Phương thức thanh toán: {paymentMethods}");
-            }
+                string result = "Lịch sử chuyến đi của khách hàng:\n";
+                result += $"ID: {customer.Id}, Tên: {customer.Name}, SĐT: {customer.PhoneNumber}\n";
+                result += "Danh sách chuyến đi:\n";
+                for (int i = 0; i < trips.Count; i++)
+                {
+                    Trip trip = trips[i];
+                    string paymentMethods = trip.PaymentMethod.Count > 0 ? string.Join(", ", trip.PaymentMethod) : "Chưa xác định";
+                    result += $" - Chuyến {trip.Id}: Khoảng cách: {trip.Distance}km, Giá: {trip.Price}, Phương thức thanh toán: {paymentMethods}\n";
+                }
 
-            // Tính và in tổng tiền
-            double totalPrice = CalculateTotalPrice();
-            Console.WriteLine($"Tổng tiền đã trả: {totalPrice}");
+                double totalPrice = CalculateTotalPrice();
+                result += $"Tổng tiền đã trả: {totalPrice}";
+                return result;
+            }
         }
 
         // Tính tổng tiền bằng toán tử +
@@ -185,53 +183,6 @@ namespace Winform_Grab
             history.PrintTripHistory();
         }
     }
-
-    //public class Login
-    //{
-    //    public static Customer CusLogin()
-    //    {
-    //        bool check = false;
-    //        Customer currentCustomer = null;
-    //        while (!check)
-    //        {
-    //            Console.WriteLine("Đăng nhập");
-    //            Console.Write("Nhập số điện thoại: ");
-    //            string phoneNumber;
-    //            int number;
-    //            while (!int.TryParse(phoneNumber = Console.ReadLine(), out number))
-
-    //                Console.Write("Nhập mật khẩu: ");
-    //            string password = Console.ReadLine();
-    //            //while (!int.TryParse(Console.ReadLine(), out password))
-    //            //{
-    //            //    Console.Write("Mật khẩu không hợp lệ. Nhập lại: ");
-    //            //}
-
-    //            check = DataManager.VerifyUserCredentials(phoneNumber, password);
-    //            if (check)
-    //            {
-    //                Console.WriteLine("Đăng nhập thành công");
-    //                currentCustomer = DataManager.GetCustomerByPhoneNumber(phoneNumber);
-    //                if (currentCustomer != null)
-    //                {
-    //                    Console.WriteLine($"Xin chào {currentCustomer.Name}");
-    //                    return currentCustomer;
-    //                }
-    //                else
-    //                {
-    //                    Console.WriteLine("Không tìm thấy thông tin khách hàng.");
-    //                    return null;
-    //                }
-    //            }
-    //            else
-    //            {
-    //                Console.WriteLine("Sai số điện thoại hoặc mật khẩu. Vui lòng thử lại.");
-    //            }
-    //        }
-    //        return null;
-    //    }
-    //}
-
     public class Book
     {
         public static void BookTrip(Customer currentCustomer)

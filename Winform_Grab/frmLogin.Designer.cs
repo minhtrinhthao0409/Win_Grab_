@@ -49,7 +49,7 @@
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
             this.label6.Location = new System.Drawing.Point(94, 509);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 17);
+            this.label6.Size = new System.Drawing.Size(177, 31);
             this.label6.TabIndex = 22;
             this.label6.Text = "Create Account";
             this.label6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -60,7 +60,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(70, 483);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(146, 17);
+            this.label5.Size = new System.Drawing.Size(253, 31);
             this.label5.TabIndex = 21;
             this.label5.Text = "Don\'t have an account";
             this.label5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -105,7 +105,7 @@
             this.checkboxShowPas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
             this.checkboxShowPas.Location = new System.Drawing.Point(134, 345);
             this.checkboxShowPas.Name = "checkboxShowPas";
-            this.checkboxShowPas.Size = new System.Drawing.Size(119, 21);
+            this.checkboxShowPas.Size = new System.Drawing.Size(203, 35);
             this.checkboxShowPas.TabIndex = 14;
             this.checkboxShowPas.Text = "Show Password";
             this.checkboxShowPas.UseVisualStyleBackColor = true;
@@ -117,7 +117,7 @@
             this.txtPassword.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(37, 311);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(216, 28);
+            this.txtPassword.Size = new System.Drawing.Size(216, 44);
             this.txtPassword.TabIndex = 16;
             this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
@@ -127,7 +127,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(38, 280);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 17);
+            this.label3.Size = new System.Drawing.Size(114, 31);
             this.label3.TabIndex = 15;
             this.label3.Text = "Password";
             // 
@@ -146,7 +146,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(38, 201);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 17);
+            this.label2.Size = new System.Drawing.Size(121, 31);
             this.label2.TabIndex = 12;
             this.label2.Text = "Username";
             // 
@@ -164,7 +164,7 @@
             // frmLogin
             // 
             this.AcceptButton = this.button1;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -182,6 +182,7 @@
             this.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

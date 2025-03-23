@@ -17,7 +17,7 @@ namespace Winform_Grab
         {
             InitializeComponent();
             currentCustomer = customer;
-            txtHello.Text = "Hello, " + currentCustomer.Name + ".\n" +"Không chê em nghèo, lên xe em đèo.";
+            txtHello.Text = "Hello, " + currentCustomer.Name + ".\n" + " Không chê em nghèo, lên xe em đèo.";
         }
 
         private void toolStripTextBox1_Click(object sender, EventArgs e)
@@ -32,7 +32,7 @@ namespace Winform_Grab
 
         private void btnBooking_Click(object sender, EventArgs e)
         {
-            Booking booking = new Booking(this);
+            Booking booking = new Booking(currentCustomer);
             booking.Show();
             this.Hide();
         }
@@ -58,6 +58,13 @@ namespace Winform_Grab
         {
             ShowInfor showInfo = new ShowInfor(this, currentCustomer);
             showInfo.Show();
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            HistoryForm history = new HistoryForm(currentCustomer);
+            history.Show();
             this.Hide();
         }
     }

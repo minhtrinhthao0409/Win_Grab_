@@ -2,7 +2,7 @@
 using System.Text.Json.Serialization;
 using System.IO;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 using System;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
@@ -26,6 +26,11 @@ namespace Winform_Grab
         {
             try
             {
+                if (File.Exists(fileName))
+                {
+                    string backupFile = fileName + ".backup";
+                    File.Copy(fileName, backupFile, true);
+                }   
                 string jsonString = JsonSerializer.Serialize(data, Options);
                 File.WriteAllText(fileName, jsonString);
                 Console.WriteLine("Đã lưu dữ liệu vào " + fileName);
@@ -43,12 +48,25 @@ namespace Winform_Grab
             {
                 if (!File.Exists(fileName))
                 {
+                    File.WriteAllText(fileName, "[]");
                     return new List<T>();
                 }
 
                 string jsonString = File.ReadAllText(fileName);
+                if (string.IsNullOrWhiteSpace(jsonString))
+                {
+                    File.WriteAllText(fileName, "[]");
+                    return new List<T>();
+                }
+
                 List<T> result = JsonSerializer.Deserialize<List<T>>(jsonString, Options);
                 return result != null ? result : new List<T>();
+            }
+            catch (JsonException ex)
+            {
+                Console.WriteLine($"Lỗi định dạng JSON trong file {fileName}: {ex.Message}");
+                File.WriteAllText(fileName, "[]");
+                return new List<T>();
             }
             catch (Exception ex)
             {
