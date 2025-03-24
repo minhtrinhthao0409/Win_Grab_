@@ -51,29 +51,38 @@ namespace Winform_Grab
             }
         }
     }
-
+    public delegate void DriverFoundHandler(Driver driver, Location startLocation);
     public class LookForDriver
     {
-        private static double k = 1; // km
         private const double MAX_K = 3; // km, giới hạn tối đa
+
+        // Sự kiện được kích hoạt khi tìm thấy tài xế
+        public static event DriverFoundHandler OnDriverFound;
 
         public static Driver FindDriver(Location location, bool carType, double k = 1)
         {
             List<Driver> drivers = DataManager.LoadDrivers();
+            Console.WriteLine($"Số lượng tài xế: {drivers.Count}");
+            Console.WriteLine($"Loại xe yêu cầu: {(carType ? "Bike" : "Car")}");
 
             if (drivers.Count == 0)
             {
+                Console.WriteLine("Không có tài xế nào trong drivers.json.");
                 return null;
             }
 
             foreach (Driver d in drivers)
             {
+                Console.WriteLine($"Tài xế: {d.Name}, Loại xe: {(d.VehicleType ? "Bike" : "Car")}, Sẵn sàng: {d.Availability}");
                 if (d.VehicleType == carType && d.Availability)
                 {
                     double distance = DistanceCalculator.CalculateDistance(location, d.Location);
-                    Console.WriteLine($"Distance: {distance}");
+                    Console.WriteLine($"Khoảng cách đến tài xế {d.Name}: {distance:F2} km");
                     if (distance < k)
                     {
+                        Console.WriteLine($"Tìm thấy tài xế: {d.Name}");
+                        // Kích hoạt sự kiện khi tìm thấy tài xế
+                        OnDriverFound?.Invoke(d, location);
                         return d;
                     }
                 }
@@ -81,9 +90,11 @@ namespace Winform_Grab
 
             if (k + 1 <= MAX_K)
             {
-                return FindDriver(location, carType, k + 1); // Truyền k vào thay vì dùng biến static
+                Console.WriteLine($"Tăng bán kính tìm kiếm lên {k + 1} km");
+                return FindDriver(location, carType, k + 1);
             }
 
+            Console.WriteLine("Không tìm thấy tài xế trong bán kính tối đa.");
             return null;
         }
     }

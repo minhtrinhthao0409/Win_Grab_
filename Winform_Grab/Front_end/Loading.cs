@@ -49,7 +49,13 @@ namespace Winform_Grab
             {
                 timer1.Stop();
 
-                // Tìm tài xế
+                // Đăng ký sự kiện OnDriverFound
+                LookForDriver.OnDriverFound += (Driver, location) =>
+                {
+                    MessageBox.Show($"Đã tìm thấy tài xế {Driver.Name} tại vị trí ({location.Latitude}, {location.Longitude})!");
+                    // Có thể thêm logic khác, ví dụ: ghi log, gửi thông báo, v.v.
+                };
+
                 bool carType = travelMode.ToLower() == "car" ? false : true;
                 Driver driver = LookForDriver.FindDriver(startLocation, carType);
                 if (driver == null)
@@ -59,7 +65,6 @@ namespace Winform_Grab
                     return;
                 }
 
-                // Tạo chuyến đi
                 if (currentCustomer != null)
                 {
                     Trip trip = TripHandler.CreateTrip(currentCustomer, startLocation, endLocation, driver, distance, fare);
@@ -70,7 +75,6 @@ namespace Winform_Grab
                     MessageBox.Show("Không thể tạo chuyến đi. Thông tin khách hàng không tồn tại.");
                 }
 
-                // Đóng form Loading
                 this.Close();
             }
         }
