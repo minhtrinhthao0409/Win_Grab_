@@ -1,0 +1,22 @@
+[
+  {
+    "Id": "D001",
+    "Name": "Tài xế 1",
+    "VehicleType": false,
+    "Availability": true,
+    "Location": {
+      "Latitude": 21.0280,
+      "Longitude": 105.8530
+    }
+  },
+  {
+    "Id": "D002",
+    "Name": "Tài xế 2",
+    "VehicleType": true,
+    "Availability": true,
+    "Location": {
+      "Latitude": 21.0290,
+      "Longitude": 105.8550
+    }
+  }
+]
