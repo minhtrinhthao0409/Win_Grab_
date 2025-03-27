@@ -136,7 +136,7 @@ namespace Winform_Grab
             }
         }
 
-        // In thông tin lịch sử chuyến đi
+        //In thông tin lịch sử chuyến đi
         public string PrintTripHistory()
         {
             if (trips.Count == 0)
@@ -234,7 +234,6 @@ namespace Winform_Grab
             }
         }
     }
-
     public class Check
     {
         public static double GetValidDoubleInput()

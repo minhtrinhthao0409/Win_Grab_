@@ -74,7 +74,7 @@
             this.txtUsername.Multiline = true;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(216, 28);
-            this.txtUsername.TabIndex = 2;
+            this.txtUsername.TabIndex = 1;
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // txtPassword
@@ -84,7 +84,7 @@
             this.txtPassword.Location = new System.Drawing.Point(37, 232);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(216, 28);
-            this.txtPassword.TabIndex = 16;
+            this.txtPassword.TabIndex = 2;
             this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -105,7 +105,7 @@
             this.txtComPassword.Location = new System.Drawing.Point(37, 311);
             this.txtComPassword.Name = "txtComPassword";
             this.txtComPassword.Size = new System.Drawing.Size(216, 28);
-            this.txtComPassword.TabIndex = 16;
+            this.txtComPassword.TabIndex = 3;
             this.txtComPassword.UseSystemPasswordChar = true;
             this.txtComPassword.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
@@ -129,7 +129,7 @@
             this.checkboxShowPas.Location = new System.Drawing.Point(134, 345);
             this.checkboxShowPas.Name = "checkboxShowPas";
             this.checkboxShowPas.Size = new System.Drawing.Size(119, 21);
-            this.checkboxShowPas.TabIndex = 3;
+            this.checkboxShowPas.TabIndex = 4;
             this.checkboxShowPas.Text = "Show Password";
             this.checkboxShowPas.UseVisualStyleBackColor = true;
             this.checkboxShowPas.CheckedChanged += new System.EventHandler(this.checkboxShowPas_CheckedChanged);
@@ -144,7 +144,7 @@
             this.button1.Location = new System.Drawing.Point(37, 379);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(216, 35);
-            this.button1.TabIndex = 7;
+            this.button1.TabIndex = 5;
             this.button1.Text = "REGISTER";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -158,7 +158,7 @@
             this.button2.Location = new System.Drawing.Point(37, 431);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(216, 35);
-            this.button2.TabIndex = 8;
+            this.button2.TabIndex = 6;
             this.button2.Text = "CLEAR";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);

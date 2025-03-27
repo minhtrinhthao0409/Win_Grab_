@@ -223,6 +223,7 @@
     <Content Include="logo.svg" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Back_end\Trip\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
