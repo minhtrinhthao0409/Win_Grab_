@@ -37,7 +37,7 @@ namespace Winform_Grab
             var request = new DistanceRequest(origin, destination, travelMode);
             var response = await _distanceService.CalculateDistanceAsync(request);
 
-            double distance = response.Rows[0].Elements[0].Distance.Value / 1000.0; // km
+            double distance = response.Rows[0].Elements[0].Distance.Value / 100.0; // km
             double duration = response.Rows[0].Elements[0].Duration.Value / 3600.0; // giờ
            
             // Tính giá tiền
@@ -48,13 +48,13 @@ namespace Winform_Grab
             PointLatLng end = GetCoordinates(destination);
 
             // Vẽ tuyến đường thẳng
-            var routePoints = new List<PointLatLng> { start, end };
-            var route = new GMapRoute(routePoints, "Route") { Stroke = new Pen(Color.Blue, 2) };
-            var routeOverlay = new GMapOverlay("RouteOverlay");
+            List<PointLatLng> routePoints = new List<PointLatLng> { start, end };
+            GMapRoute route = new GMapRoute(routePoints, "Route") { Stroke = new Pen(Color.Blue, 2) };
+            GMapOverlay routeOverlay = new GMapOverlay("RouteOverlay");
             routeOverlay.Routes.Add(route);
 
             // Đánh dấu điểm
-            var markers = new GMapOverlay("Markers");
+            GMapOverlay markers = new GMapOverlay("Markers");
             markers.Markers.Add(new GMarkerGoogle(start, GMarkerGoogleType.pink_pushpin));
             markers.Markers.Add(new GMarkerGoogle(end, GMarkerGoogleType.purple_dot));
 
@@ -65,7 +65,7 @@ namespace Winform_Grab
             _mapControl.ZoomAndCenterMarkers("Markers");
 
             await Task.Delay(100); // Simulate async work
-            return (distance: 100.5, duration: 2.5, fare: 100000); // Example values
+            return (distance, duration, fare); // Example values
         }
 
         private double CalculateFare(double distance, string vehicleType)
@@ -81,7 +81,10 @@ namespace Winform_Grab
         {
             if (address.Contains("UEH CS B")) return new PointLatLng(10.76130, 106.66834);
             if (address.Contains("UEH CS N")) return new PointLatLng(10.70697, 106.64021);
+            if (address.Contains("Bến Bạch Đằng")) return new PointLatLng(10.77590, 106.70696);
+            if (address.Contains("Nhà hát lớn TP.HCM")) return new PointLatLng(10.77672, 106.70317);
             return new PointLatLng(10.7769, 106.7009); // TP.HCM mặc định
         }
+
+        }
     }
-}
