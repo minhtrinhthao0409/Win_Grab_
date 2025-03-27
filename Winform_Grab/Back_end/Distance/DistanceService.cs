@@ -12,13 +12,11 @@ namespace Winform_Grab
 
         public override Task<string> GetDataAsync(string url)
         {
-            // Không cần gọi API thật, trả về chuỗi rỗng vì dùng fake data
             return Task.FromResult("");
         }
 
         public Task<DistanceResponse> CalculateDistanceAsync(DistanceRequest request)
         {
-            // Luôn trả về dữ liệu giả lập
             return Task.FromResult(GetFakeResponse(request.Origin, request.Destination));
         }
 

@@ -95,17 +95,14 @@ namespace Winform_Grab
                 {
                     customers.RemoveAt(i);
                     SaveCustomers(customers);
-                    Console.WriteLine("Đã xóa Customer với Id: " + id);
                     return;
                 }
             }
-            Console.WriteLine("Không tìm thấy Customer với Id: " + id);
         }
 
         public static void ClearCustomers()
         {
             SaveToJson(new List<Customer>(), CustomerFile);
-            Console.WriteLine("Đã xóa toàn bộ dữ liệu trong " + CustomerFile);
         }
 
         public static Customer GetCustomerById(string id)
@@ -137,7 +134,41 @@ namespace Winform_Grab
         // Driver
         public static void SaveDrivers(List<Driver> drivers) => SaveToJson(drivers, DriverFile);
         public static List<Driver> LoadDrivers() => LoadFromJson<Driver>(DriverFile);
-
+        public static void InitializeDriverData()
+        {
+            List<Driver> drivers = LoadDrivers();
+            if (drivers.Count == 0)
+            {
+                drivers.Add(new Driver
+                {
+                    Id = "D001",
+                    Name = "Nguyễn Văn An",
+                    PhoneNumber = "0901234567",
+                    Password = "driver123",
+                    VehicleType = false, // Car
+                    Availability = true,
+                    Location = new Location(21.0280, 105.8530), // Gần Hà Nội
+                    Vehicle = new Car { PlateNumber = "30A-12345" }
+                });
+                drivers.Add(new Driver
+                {
+                    Id = "D002",
+                    Name = "Trần Thị Bình",
+                    PhoneNumber = "0912345678",
+                    Password = "driver456",
+                    VehicleType = true, // Bike
+                    Availability = true,
+                    Location = new Location(21.0290, 105.8550), // Gần Hà Nội
+                    Vehicle = new Bike { PlateNumber = "29B-67890" }
+                });
+                SaveDrivers(drivers);
+                Console.WriteLine("Đã khởi tạo dữ liệu tài xế mẫu.");
+            }
+            else
+            {
+                Console.WriteLine("Dữ liệu tài xế đã tồn tại, không cần khởi tạo.");
+            }
+        }
         public static void AddDriver(Driver driver)
         {
             List<Driver> drivers = LoadDrivers();
@@ -154,17 +185,14 @@ namespace Winform_Grab
                 {
                     drivers.RemoveAt(i);
                     SaveDrivers(drivers);
-                    Console.WriteLine("Đã xóa Driver với Id: " + id);
                     return;
                 }
             }
-            Console.WriteLine("Không tìm thấy Driver với Id: " + id);
         }
 
         public static void ClearDrivers()
         {
             SaveToJson(new List<Driver>(), DriverFile);
-            Console.WriteLine("Đã xóa toàn bộ dữ liệu trong " + DriverFile);
         }
 
         public static Driver GetDriverById(string id)
@@ -200,17 +228,14 @@ namespace Winform_Grab
                 {
                     trips.RemoveAt(i);
                     SaveTrips(trips);
-                    Console.WriteLine("Đã xóa Trip với Id: " + id);
                     return;
                 }
             }
-            Console.WriteLine("Không tìm thấy Trip với Id: " + id);
         }
 
         public static void ClearTrips()
         {
             SaveToJson(new List<Trip>(), TripFile);
-            Console.WriteLine("Đã xóa toàn bộ dữ liệu trong " + TripFile);
         }
 
         public static bool VerifyUserCredentials(string phoneNumber, string password)

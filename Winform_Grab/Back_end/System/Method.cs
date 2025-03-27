@@ -62,26 +62,19 @@ namespace Winform_Grab
         public static Driver FindDriver(Location location, bool carType, double k = 1)
         {
             List<Driver> drivers = DataManager.LoadDrivers();
-            Console.WriteLine($"Số lượng tài xế: {drivers.Count}");
-            Console.WriteLine($"Loại xe yêu cầu: {(carType ? "Bike" : "Car")}");
 
             if (drivers.Count == 0)
             {
-                Console.WriteLine("Không có tài xế nào trong drivers.json.");
                 return null;
             }
 
             foreach (Driver d in drivers)
             {
-                Console.WriteLine($"Tài xế: {d.Name}, Loại xe: {(d.VehicleType ? "Bike" : "Car")}, Sẵn sàng: {d.Availability}");
                 if (d.VehicleType == carType && d.Availability)
                 {
                     double distance = DistanceCalculator.CalculateDistance(location, d.Location);
-                    Console.WriteLine($"Khoảng cách đến tài xế {d.Name}: {distance:F2} km");
                     if (distance < k)
                     {
-                        Console.WriteLine($"Tìm thấy tài xế: {d.Name}");
-                        // Kích hoạt sự kiện khi tìm thấy tài xế
                         OnDriverFound?.Invoke(d, location);
                         return d;
                     }
@@ -90,11 +83,8 @@ namespace Winform_Grab
 
             if (k + 1 <= MAX_K)
             {
-                Console.WriteLine($"Tăng bán kính tìm kiếm lên {k + 1} km");
                 return FindDriver(location, carType, k + 1);
             }
-
-            Console.WriteLine("Không tìm thấy tài xế trong bán kính tối đa.");
             return null;
         }
     }
@@ -189,7 +179,6 @@ namespace Winform_Grab
 
         public static void ViewTripHistory(Customer currentCustomer)
         {
-            Console.WriteLine("\nLịch sử chuyến đi:");
             TripHistory history = new TripHistory(currentCustomer);
             history.PrintTripHistory();
         }
@@ -198,22 +187,14 @@ namespace Winform_Grab
     {
         public static void BookTrip(Customer currentCustomer)
         {
-            Console.WriteLine("\nNhập thông tin chuyến đi:");
-            Console.WriteLine("Nhập tọa độ nơi bắt đầu:");
-            Console.Write("Nhập kinh độ (longitude): ");
             double sLongitude = Check.GetValidDoubleInput();
-            Console.Write("Nhập vĩ độ (latitude): ");
             double sLatitude = Check.GetValidDoubleInput();
             Location startLocation = new Location(sLatitude, sLongitude);
 
-            Console.WriteLine("Nhập tọa độ nơi cần đến:");
-            Console.Write("Nhập kinh độ (longitude): ");
             double eLongitude = Check.GetValidDoubleInput();
-            Console.Write("Nhập vĩ độ (latitude): ");
             double eLatitude = Check.GetValidDoubleInput();
             Location endLocation = new Location(eLatitude, eLongitude);
 
-            Console.WriteLine("Nhập loại xe (car/bike): ");
             string vehicleInput = Console.ReadLine().ToLower();
             bool carType = vehicleInput == "car" ? false : true;
 
@@ -221,18 +202,14 @@ namespace Winform_Grab
             Driver driver = LookForDriver.FindDriver(startLocation, carType);
             if (driver == null)
             {
-                Console.WriteLine("Không tìm thấy tài xế phù hợp. Vui lòng thử lại sau.");
                 return;
             }
-            Console.WriteLine($"Đã tìm thấy tài xế: {driver.Name} ({(carType ? "Bike" : "Car")})");
 
             // Tính khoảng cách và giá tiền sau khi tìm thấy tài xế
             double distance = DistanceCalculator.CalculateDistance(startLocation, endLocation);
             double price = PriceCalculator.CalculatePrice(distance, carType);
-            Console.WriteLine($"Khoảng cách: {distance:F2} km, Giá tiền: {price:F2}");
 
             // Chờ tài xế
-            Console.WriteLine("Vui lòng chờ tài xế đến. Nhấn '1' để hủy chuyến...");
             bool tripCancelled = false;
             int waitTime = 15000;
             int elapsed = 0;
@@ -244,20 +221,16 @@ namespace Winform_Grab
                     if (key.KeyChar == '1')
                     {
                         tripCancelled = true;
-                        Console.WriteLine("\nChuyến đi đã bị hủy.");
                         break;
                     }
                 }
                 Thread.Sleep(1000);
                 elapsed += 1000;
-                Console.WriteLine($"Đã chờ {elapsed / 1000} giây...");
             }
 
             if (!tripCancelled)
             {
-                Console.WriteLine("Tài xế đã đến.");
                 Trip trip = TripHandler.CreateTrip(currentCustomer, startLocation, endLocation, driver, distance, price);
-                Console.WriteLine($"Chuyến đi {trip.Id} đã được tạo thành công.");
             }
         }
     }
@@ -269,7 +242,6 @@ namespace Winform_Grab
             double value;
             while (!double.TryParse(Console.ReadLine(), out value))
             {
-                Console.Write("Giá trị không hợp lệ. Nhập lại: ");
             }
             return value;
         }

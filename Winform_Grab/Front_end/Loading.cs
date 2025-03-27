@@ -68,7 +68,7 @@ namespace Winform_Grab
                 if (currentCustomer != null)
                 {
                     Trip trip = TripHandler.CreateTrip(currentCustomer, startLocation, endLocation, driver, distance, fare);
-                    MessageBox.Show($"Đã tìm thấy tài xế {driver.Name}! Chuyến đi {trip.Id} đã được tạo thành công.");
+                    MessageBox.Show($"Chuyến đi {trip.Id} đã được tạo thành công.");
                 }
                 else
                 {

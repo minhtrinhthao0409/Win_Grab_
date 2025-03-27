@@ -24,7 +24,6 @@ namespace Winform_Grab
 
         public string BuildUrl()
         {
-            // Không cần API key vì dùng fake data
             return $"fakeurl?origins={Uri.EscapeDataString(Origin)}&destinations={Uri.EscapeDataString(Destination)}&mode={TravelMode}";
         }
     }

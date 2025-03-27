@@ -103,7 +103,7 @@ namespace Winform_Grab
             this.gmapControl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(165)))), ((int)(((byte)(169)))));
             this.gmapControl.GrayScaleMode = false;
             this.gmapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
-            this.gmapControl.LevelsKeepInMemory = 5;
+            this.gmapControl.LevelsKeepInMemmory = 5;
             this.gmapControl.Location = new System.Drawing.Point(13, 23);
             this.gmapControl.MarkersEnabled = true;
             this.gmapControl.MaxZoom = 2;

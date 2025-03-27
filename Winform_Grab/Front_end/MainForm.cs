@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace Winform_Grab
         public MainForm(Customer customer)
         {
             InitializeComponent();
+            DataManager.InitializeDriverData();
             currentCustomer = customer;
             txtHello.Text = "Hello, " + currentCustomer.Name + ".\n" + " Không chê em nghèo, lên xe em đèo.";
         }

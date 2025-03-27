@@ -3,7 +3,6 @@ using System.Text.Json.Serialization;
 
 namespace Winform_Grab
 {
-    
     public class Location
     {
         [JsonPropertyName("latitude")]
