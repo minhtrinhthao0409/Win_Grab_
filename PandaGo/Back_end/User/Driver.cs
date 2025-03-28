@@ -1,4 +1,5 @@
 ﻿using GMap.NET;
+using System;
 using System.Drawing;
 using System.Text.Json.Serialization;
 
@@ -17,6 +18,11 @@ namespace PandaGo
 
         [JsonPropertyName("location")]
         public PointLatLng Location { get; set; }
+        public override void ShowInfor() 
+        { 
+            Console.WriteLine($"Tài xế tên {Name} có số điện thoại {PhoneNumber}"); 
+        }
+
     }
 
 }
