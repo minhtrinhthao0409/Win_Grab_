@@ -57,9 +57,9 @@ namespace PandaGo
                 double distance = 0;
                 double duration = 0;
                 double fare = 0;
-                (distance, duration, fare) = await _mapManager.ShowRouteAsync(origin, destination, travelMode.ToLower());
+                (distance, duration, fare) = await _mapManager.ShowRouteAsync(origin, destination, travelMode);
 
-                lblResult.Text = $"Distance: {distance:F2} km\nDuration: {duration:F2} giờ\nFare: {fare:N0} VNĐ";
+                
 
                 // Giả lập tọa độ (trong thực tế, bạn cần chuyển đổi địa chỉ thành tọa độ)
                 PointLatLng startLocation = new PointLatLng(21.0285, 105.8542); // Ví dụ: Hà Nội
