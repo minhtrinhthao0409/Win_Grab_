@@ -53,7 +53,7 @@ namespace PandaGo
                 // Đăng ký sự kiện OnDriverFound
                 LookForDriver.OnDriverFound += (Driver, location) =>
                 {
-                    MessageBox.Show($"Đã tìm thấy tài xế {Driver.Name} tại vị trí ({location.Lat}, {location.Lng})!");
+                    MessageBox.Show($"Đã tìm thấy tài xế!");
                     // Có thể thêm logic khác, ví dụ: ghi log, gửi thông báo, v.v.
                 };
 
